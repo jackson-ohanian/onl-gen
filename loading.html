@@ -1,0 +1,31 @@
+
+<!doctype html>
+<title>Running</title>
+<style>
+    body,
+    .center {
+        margin: auto;
+        width: 80%;
+        height: 80%;
+        padding: 5px;
+    }
+</style>
+<body>
+
+{% block content %}
+    <h1 class="title">
+  Easy VAE
+</h1>
+    <h2 class="subtitle">
+        running models
+</h2> {% endblock %}
+
+   <p>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+    </p>

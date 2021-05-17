@@ -1,0 +1,72 @@
+
+<!doctype html>
+<title>File Uploader</title>
+<style>
+    body,
+    .center {
+        margin: auto;
+        width: 80%;
+        height: 80%;
+        padding: 5px;
+    }
+</style>
+<body>
+
+{% block content %}
+    <h1 class="title">
+  Easy VAE
+</h1>
+    <h2 class="subtitle">
+  simple VAE based image generation.
+</h2> {% endblock %}
+
+   <p>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+    </p>
+
+<form method="post" action="/upload" enctype="multipart/form-data">
+
+        <div class="box__input">
+            <dl style="background-color:Tomato;">
+                <p> Name: <input name="user" type="username" /></p>
+                <p>
+                    Default
+                    <input type="checkbox" id="scales" name="scales" checked> </p>
+                <p>
+
+
+                <p>
+                    <select name="dist" id="dist">
+                      <option value="bin">Binomial</option>
+                      <option value="gau">Gaussian</option>
+                      <option value="exp">Exponential</option>
+                    </select>
+                </p>
+                    <p> IMG Size (NxN) <input name="img_sz" type="number" required/></p>
+                    <p> Output Samples: <input name="out_ct" type="number" required/></p>
+
+                    <input type="file" name="files[]" multiple="true" autocomplete="off" required>
+                </p>
+                <p>
+                    <b> Advanced Options </b>
+                </p>
+                <p> Latent Dimension Size: <input name="lat_sz" type="number" /></p>
+                <p> Hidden Dimension Size: <input name="hide_sz" type="number" /></p>
+                <p> Training Epochs: <input name="epochs" type="number" /></p>
+                <p> Number of Convulation Layers : <input name="conv_ct" type="number" /></p>
+                <p> Sigmoid layer (force B&W) <input type="checkbox" id="sig" name="sig"> </p>
+
+            </dl>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </div>
+
+
+    </form>
